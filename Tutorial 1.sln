@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInterface", "DBInterface\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBClient", "DBClient\DBClient.csproj", "{CCF10BB9-95B8-4078-A53C-85D60A58ACD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessAPI", "BusinessAPI\BusinessAPI.csproj", "{27678D16-E569-4C5C-82B6-10F8CE3151E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessAPI", "BusinessAPI\BusinessAPI.csproj", "{27678D16-E569-4C5C-82B6-10F8CE3151E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAPI", "DataAPI\DataAPI.csproj", "{E1CB425F-F491-4B0C-919B-94F7AA4D1067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAPI", "DataAPI\DataAPI.csproj", "{E1CB425F-F491-4B0C-919B-94F7AA4D1067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIClasses", "APIClasses\APIClasses.csproj", "{9C16E479-77D0-40B0-A56E-EC031042227C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIClasses", "APIClass\APIClasses.csproj", "{68BB9AEB-2E00-497E-A20E-6D3D860816CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{E1CB425F-F491-4B0C-919B-94F7AA4D1067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1CB425F-F491-4B0C-919B-94F7AA4D1067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1CB425F-F491-4B0C-919B-94F7AA4D1067}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C16E479-77D0-40B0-A56E-EC031042227C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C16E479-77D0-40B0-A56E-EC031042227C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C16E479-77D0-40B0-A56E-EC031042227C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C16E479-77D0-40B0-A56E-EC031042227C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68BB9AEB-2E00-497E-A20E-6D3D860816CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68BB9AEB-2E00-497E-A20E-6D3D860816CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68BB9AEB-2E00-497E-A20E-6D3D860816CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68BB9AEB-2E00-497E-A20E-6D3D860816CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

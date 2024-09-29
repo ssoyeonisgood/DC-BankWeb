@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DBClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="220" Width="500">
-    <Grid>
-        <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="126" Margin="10,10,0,0" VerticalAlignment="Top" Width="126" OpacityMask="Black"/>
+        Title="MainWindow" Height="220" Width="581">
+    <Grid HorizontalAlignment="Left" Width="586" RenderTransformOrigin="0.5,0.5">
+
+        <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="126" Margin="10,12,0,0" VerticalAlignment="Top" Width="126" OpacityMask="Black"/>
         <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="20" Margin="147,12,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="20" Margin="147,37,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="AcctNo" HorizontalAlignment="Left" Height="20" Margin="147,62,0,0" TextWrapping="Wrap" Text="Account Number" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Pin" HorizontalAlignment="Left" Height="20" Margin="147,87,0,0" TextWrapping="Wrap" Text="Pin" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Balance" HorizontalAlignment="Left" Height="20" Margin="147,112,0,0" TextWrapping="Wrap" Text="Balance" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="NoItems" Content="Total Items: " HorizontalAlignment="Left" Margin="316,106,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IndexBox" HorizontalAlignment="Left" Height="20" Margin="320,133,0,0" TextWrapping="Wrap" Text="INDEX" VerticalAlignment="Top" Width="86"/>
-        <Button x:Name="IndexButton" Content="Go!" HorizontalAlignment="Left" Height="20" Margin="414,133,0,0" VerticalAlignment="Top" Width="69" Click="IndexButton_OnClick"/>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="213" Margin="293,0,0,-18.333" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Label x:Name="NoItems" Content="Total Items: " HorizontalAlignment="Left" Margin="347,54,0,0" VerticalAlignment="Top" Width="161"/>
+        <TextBox x:Name="IndexBox" HorizontalAlignment="Left" Height="20" Margin="347,80,0,0" TextWrapping="Wrap" Text="INDEX" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="4"/>
+        <Button x:Name="GoButton" Content="Go!" HorizontalAlignment="Left" Height="20" Margin="444,80,0,0" VerticalAlignment="Top" Width="69" Click="GoButton_OnClick"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="213" Margin="293,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <TextBox x:Name="LastnameBox" HorizontalAlignment="Left" Height="20" Margin="347,110,0,0" TextWrapping="Wrap" Text="LASTNAME" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="4" />
+        <Button x:Name="SearchButton" Content="Search!" HorizontalAlignment="Left" Height="20" Margin="444,110,0,0" VerticalAlignment="Top" Width="69" Click="SearchButton_Click"/>
 
-</Grid>
+    </Grid>
 </Window>

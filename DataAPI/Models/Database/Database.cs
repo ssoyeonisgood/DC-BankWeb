@@ -19,16 +19,16 @@ namespace DataAPI.Models.Database
             var generator = new DataGen();
             int size = generator.NumOAccts();
             Console.WriteLine("Size database: " + size);
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < size; i++)
             {
                 DataIntermed temp = generator.GetNextAccount();
                 _database.Add(temp);
 
             }
-            for (var i = 0; i < _database.Count; i++)
-            {
-                Console.WriteLine(_database[i].ToString());
-            }
+            //for (var i = 0; i < _database.Count; i++)
+            //{
+            //    Console.WriteLine(_database[i].ToString());
+            //}
 
             Console.WriteLine("Database size: " + _database.Count);
         }
@@ -45,31 +45,6 @@ namespace DataAPI.Models.Database
         //    return new DataIntermed();
         //}
 
-        public uint GetAcctNoByIndex(int index)
-        {
-            return _database[index].acctNo;
-        }
-
-        public uint GetPINByIndex(int index)
-        {
-            return _database[index].pin;
-        }
-
-        public string GetFirstNameByIndex(int index)
-        {
-            return _database[index].firstName;
-        }
-
-        public string GetLastNameByIndex(int index)
-        {
-            return _database[index].lastName;
-        }
-
-        public int GetBalanceByIndex(int index)
-        {
-            return _database[index].balance;
-        }
-
         public List<DataIntermed> GetAllAccount()  
         {
             return _database;
@@ -83,6 +58,21 @@ namespace DataAPI.Models.Database
         public int GetNumRecords()
         {
             return _database.Count;
+        }
+        public DataIntermed? GetAccountByLastName(string searchData)
+        {
+            Console.WriteLine("searchname: " + searchData);
+
+            for (int i = 0; i < _database.Count; i++)
+            {
+                DataIntermed cur = _database[i];
+                if (cur.lastName == searchData)
+                {
+                    Console.WriteLine($"Searched account: {cur.acctNo}, {cur.pin}, {cur.balance}, {cur.firstName}, {cur.lastName}");
+                    return cur;
+                }
+            }
+            return null;
         }
     }
 }

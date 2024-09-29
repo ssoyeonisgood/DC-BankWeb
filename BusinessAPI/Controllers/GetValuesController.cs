@@ -20,14 +20,6 @@ namespace BusinessAPI.Controllers
             _client = new RestClient("http://localhost:5247");
         }
 
-        // GET api/<ValuesController>
-        [HttpGet()]
-        public IActionResult Get()
-        {
-            RestRequest request = new RestRequest("/data/get", Method.Get);
-            RestResponse response = _client.Execute(request);
-            return Ok(response);
-        }
         // GET api/<ValuesController>/5
         [HttpGet("{index}")]
         public IActionResult Get(int index)
@@ -40,26 +32,33 @@ namespace BusinessAPI.Controllers
 
                 if (response.IsSuccessful)
                 {
-                    if (!string.IsNullOrWhiteSpace(response.Content))
-                    {
-                        DataIntermed data = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
-                        if (data != null)
-                        {
-                            Console.WriteLine(data.ToString());
-                            return Ok(data);
-                        }
-                    }
-                    return NotFound($"No data found for index {index}");
+                    var formattedResponse = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
+                    return Ok(formattedResponse); 
                 }
-                else
-                {
-                    return StatusCode((int)response.StatusCode, $"Error: {response.ErrorMessage}");
-                }
+
+                return NotFound($"No data found for index {index}");
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
+        }
+
+        [HttpGet]
+        [Route("total")]
+        public IActionResult GetTotal()
+        {
+            RestRequest request = new RestRequest("api/data/total", Method.Get);
+            RestResponse response = _client.Execute(request);
+            return Ok(response.Content);
+
+            //if (response.IsSuccessful && !string.IsNullOrWhiteSpace(response.Content))
+            //{
+            //    int totalAccounts = JsonConvert.DeserializeObject<int>(response.Content);
+
+            //    return Ok(totalAccounts);
+            //}
+            //return StatusCode((int)response.StatusCode, $"Error: {response.ErrorMessage}");
         }
     }
 }

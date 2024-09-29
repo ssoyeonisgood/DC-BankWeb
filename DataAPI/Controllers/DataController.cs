@@ -34,5 +34,31 @@ namespace DataAPI.Controllers
             return new ObjectResult(data) { StatusCode = 200 };
         }
 
+        // POST: api/data/search
+        [HttpPost("search")]
+        public IActionResult Search([FromBody] SearchData data)
+        {
+            DataIntermed? result = _db.GetAccountByLastName(data.searchString);
+
+            Console.WriteLine("result: " + result.ToString());
+
+            if (result == null)
+            {
+                return NotFound($"No data found for search term: {data.searchString}");
+            }
+
+            return Ok(result);
+        }
+
+        // GET: api/data/total
+        [HttpGet("total")]
+        public IActionResult Total()
+        {
+            int total = _db.GetNumRecords();
+            Console.WriteLine(total);
+            return new ObjectResult(total) { StatusCode = 200 };
+        }
+        
+
     }
 }
