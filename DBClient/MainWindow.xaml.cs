@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using APIClasses;
 using System.Windows.Markup;
+using System.IO;
 
 namespace DBClient
 {
@@ -22,6 +23,41 @@ namespace DBClient
         {
             InitializeComponent();
             LoadTotalAccounts();
+            LoadImage();
+        }
+
+        private async Task LoadImage()
+        {
+            try
+            {
+                RestRequest request = new RestRequest("api/image/getimage", Method.Get);
+                RestResponse response = await _client.ExecuteAsync(request);
+
+                if (response.IsSuccessful)
+                {
+                    // Convert the response data to a byte array and display it as an image
+                    var imageBytes = response.RawBytes;
+                    using (var stream = new MemoryStream(imageBytes))
+                    {
+                        var image = new BitmapImage();
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = stream;
+                        image.EndInit();
+
+                        // Set the Image control source to the downloaded image
+                        ImageBox.Source = image;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error loading image: " + response.ErrorMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading the image: " + ex.Message);
+            }
         }
 
         private async void LoadTotalAccounts()
