@@ -13,20 +13,12 @@ namespace DataAPI.Controllers
     {
         private readonly Database _db = Database.Instance;
 
-        // GET: api/<ValuesController>
-        [HttpGet]
-        public IEnumerable<DataIntermed> Get()
-        {
-
-            return _db.GetAllAccount(); 
-        }
-
         // GET api/<ValuesController>/5
         [HttpGet("{index}")]
-        public IActionResult Get(int index)
+        public async Task<IActionResult> Get(int index)
         {
-            DataIntermed data = _db.GetAccountByIndex(index);
-            Console.WriteLine("Data API:" + data.ToString());
+            DataIntermed? data = await _db.GetAccountByIndex(index);
+            //Console.WriteLine("Data API:" + data.ToString());
             if (data == null)
             {
                 return NotFound($"No data found for index {index}");
@@ -36,11 +28,11 @@ namespace DataAPI.Controllers
 
         // POST: api/data/search
         [HttpPost("search")]
-        public IActionResult Search([FromBody] SearchData data)
+        public async Task<IActionResult> Search([FromBody] SearchData data)
         {
-            DataIntermed? result = _db.GetAccountByLastName(data.searchString);
+            DataIntermed? result = await _db.GetAccountByLastName(data.searchString);
 
-            Console.WriteLine("result: " + result.ToString());
+            Console.WriteLine("result: " + result?.ToString());
 
             if (result == null)
             {
@@ -52,10 +44,10 @@ namespace DataAPI.Controllers
 
         // GET: api/data/total
         [HttpGet("total")]
-        public IActionResult Total()
+        public async Task<IActionResult> Total()
         {
-            int total = _db.GetNumRecords();
-            Console.WriteLine(total);
+            int total = await _db.GetNumRecords();
+            //Console.WriteLine(total);
             return new ObjectResult(total) { StatusCode = 200 };
         }
         

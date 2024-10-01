@@ -22,13 +22,13 @@ namespace BusinessAPI.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{index}")]
-        public IActionResult Get(int index)
+        public async Task<IActionResult> Get(int index)
         {
             try
             {
                 RestRequest request = new RestRequest("/api/data/{index}", Method.Get);
                 request.AddUrlSegment("index", index);
-                RestResponse response = _client.Execute(request);
+                RestResponse response = await _client.ExecuteAsync(request);
 
                 if (response.IsSuccessful)
                 {
@@ -46,19 +46,26 @@ namespace BusinessAPI.Controllers
 
         [HttpGet]
         [Route("total")]
-        public IActionResult GetTotal()
+        public async Task<IActionResult> GetTotal()
         {
-            RestRequest request = new RestRequest("api/data/total", Method.Get);
-            RestResponse response = _client.Execute(request);
-            return Ok(response.Content);
+            try
+            {
+                RestRequest request = new RestRequest("api/data/total", Method.Get);
 
-            //if (response.IsSuccessful && !string.IsNullOrWhiteSpace(response.Content))
-            //{
-            //    int totalAccounts = JsonConvert.DeserializeObject<int>(response.Content);
+                // Execute the request asynchronously
+                RestResponse response = await _client.ExecuteAsync(request);
 
-            //    return Ok(totalAccounts);
-            //}
-            //return StatusCode((int)response.StatusCode, $"Error: {response.ErrorMessage}");
+                if (response.IsSuccessful)
+                {
+                    return Ok(response.Content);
+                }
+
+                return StatusCode((int)response.StatusCode, "Failed to retrieve the total count.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }

@@ -45,34 +45,39 @@ namespace DataAPI.Models.Database
         //    return new DataIntermed();
         //}
 
-        public List<DataIntermed> GetAllAccount()  
+        public async Task<List<DataIntermed>> GetAllAccount()  
         {
-            return _database;
+            return await Task.Run(() => _database);
         } 
 
-        public DataIntermed GetAccountByIndex(int index)
-        { 
-            return _database[index]; 
+        public async Task<DataIntermed?> GetAccountByIndex(int index)
+        {
+            return await Task.Run(() => _database[index]); 
         }
 
-        public int GetNumRecords()
+        public async Task<int> GetNumRecords()
         {
-            return _database.Count;
+            return await Task.Run(() => _database.Count);
         }
-        public DataIntermed? GetAccountByLastName(string searchData)
-        {
-            Console.WriteLine("searchname: " + searchData);
 
-            for (int i = 0; i < _database.Count; i++)
+        public async Task<DataIntermed?> GetAccountByLastName(string searchData)
+        {
+            return await Task.Run(() =>
             {
-                DataIntermed cur = _database[i];
-                if (cur.lastName == searchData)
+                Console.WriteLine("searchname: " + searchData);
+
+                for (int i = 0; i < _database.Count; i++)
                 {
-                    Console.WriteLine($"Searched account: {cur.acctNo}, {cur.pin}, {cur.balance}, {cur.firstName}, {cur.lastName}");
-                    return cur;
+                    DataIntermed cur = _database[i];
+                    if (cur.lastName == searchData)
+                    {
+                        Console.WriteLine($"Searched account: {cur.acctNo}, {cur.pin}, {cur.balance}, {cur.firstName}, {cur.lastName}");
+                        return cur;
+                    }
                 }
-            }
-            return null;
+                return null;
+
+            });
         }
     }
 }

@@ -20,16 +20,15 @@ namespace BusinessAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] SearchData data)
+        public async Task<IActionResult> Post([FromBody] SearchData data)
         {
             RestRequest request = new RestRequest("api/data/search", Method.Post);
             request.AddJsonBody(data);
-            RestResponse response = _client.Execute(request);
-            //return Ok(response.Content);
+            RestResponse response = await _client.ExecuteAsync(request);
 
             if (response.IsSuccessful)
             {
-                DataIntermed result = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
+                DataIntermed? result = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
 
                 if (result == null)
                 {

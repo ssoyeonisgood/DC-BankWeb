@@ -24,12 +24,12 @@ namespace DBClient
             LoadTotalAccounts();
         }
 
-        private void LoadTotalAccounts()
+        private async void LoadTotalAccounts()
         {
             try
             {
                 RestRequest request = new RestRequest("/api/GetValues/total", Method.Get);
-                RestResponse response = _client.Execute(request);
+                RestResponse response = await _client.ExecuteAsync(request);
                 if (response.IsSuccessful)
                 {
                     int totalAccounts = JsonConvert.DeserializeObject<int>(response.Content);
@@ -46,15 +46,15 @@ namespace DBClient
             }
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 SearchData mySearch = new SearchData();
                 mySearch.searchString = LastnameBox.Text;
-                RestRequest request = new RestRequest("api/search/");
+                RestRequest request = new RestRequest("api/search/", Method.Post);
                 request.AddJsonBody(mySearch);
-                RestResponse response = _client.Post(request);
+                RestResponse response = await _client.ExecuteAsync(request);
 
                 if (response.IsSuccessful)
                 {
@@ -85,13 +85,13 @@ namespace DBClient
 
 
 
-        private void GoButton_OnClick(object sender, RoutedEventArgs e)
+        private async void GoButton_OnClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 int index = Int32.Parse(IndexBox.Text);
                 RestRequest request = new RestRequest("api/getvalues/" + index.ToString());
-                RestResponse response = _client.Execute(request);
+                RestResponse response = await _client.ExecuteAsync(request);
                 if (response.IsSuccessful)
                 {
                     DataIntermed data = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
