@@ -1,14 +1,16 @@
 ﻿using System.Net.NetworkInformation;
+using System.Drawing;
 
 namespace APIClasses
 {
     public class DataIntermed
     {
-        public uint acctNo { get; set; }
-        public uint pin { get; set; }
-        public decimal balance { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public uint acctNo;
+        public uint pin;
+        public decimal balance;
+        public string firstName;
+        public string lastName;
+        public Bitmap icon;
 
         public DataIntermed()
         {
@@ -17,6 +19,7 @@ namespace APIClasses
             balance = 0;
             firstName = "";
             lastName = "";
+            icon = null;
         }
 
         public override string ToString()

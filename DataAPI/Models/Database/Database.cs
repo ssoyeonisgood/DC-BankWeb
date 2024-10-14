@@ -14,7 +14,6 @@ namespace DataAPI.Models.Database
 
         private Database()
         {
-            // Create the fake values for our fake database
             _database = new List<DataIntermed>();
             var generator = new DataGen();
             int size = generator.NumOAccts();
@@ -25,34 +24,20 @@ namespace DataAPI.Models.Database
                 _database.Add(temp);
 
             }
-            //for (var i = 0; i < _database.Count; i++)
-            //{
-            //    Console.WriteLine(_database[i].ToString());
-            //}
+
 
             Console.WriteLine("Database size: " + _database.Count);
         }
-        //public DataIntermed SearchByName(string name)
-        //{
-        //    for (int i = 0; i < _database.Count; i++)
-        //    {
-        //        DataIntermed cur = _database[i];
-        //        if (cur.lastName == name)
-        //        {
-        //            return cur;
-        //        }
-        //    }
-        //    return new DataIntermed();
-        //}
 
-        public async Task<List<DataIntermed>> GetAllAccount()  
+
+        public async Task<List<DataIntermed>> GetAllAccount()
         {
             return await Task.Run(() => _database);
-        } 
+        }
 
         public async Task<DataIntermed?> GetAccountByIndex(int index)
         {
-            return await Task.Run(() => _database[index]); 
+            return await Task.Run(() => _database[index]);
         }
 
         public async Task<int> GetNumRecords()

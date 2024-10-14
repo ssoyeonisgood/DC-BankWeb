@@ -73,7 +73,7 @@ namespace DBClient
                 }
                 else
                 {
-                    MessageBox.Show("Error fetching data: " + response.ErrorMessage);
+                    MessageBox.Show("Error fetching data " + response.ErrorMessage);
                 }
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace DBClient
                 if (response.IsSuccessful)
                 {
                     DataIntermed data = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
-                    if (data != null) // Check if data is not null
+                    if (data != null)
                     {
                         FirstName.Text = data.firstName;
                         LastName.Text = data.lastName;

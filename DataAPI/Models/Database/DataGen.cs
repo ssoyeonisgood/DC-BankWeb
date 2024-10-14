@@ -17,6 +17,24 @@ namespace DataAPI.Models.Database
             "Smith", "Johnson", "Williams", "Jones", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "Citizen", "Doe"
         };
 
+        private readonly List<Bitmap> _icons;
+
+        public DataGen()
+        {
+            _icons = new List<Bitmap>();
+            for (var i = 0; i < 10; i++)
+            {
+                var image = new Bitmap(64, 64);
+                for (var x = 0; x < 64; x++)
+                {
+                    for (var y = 0; y < 64; y++)
+                    {
+                        image.SetPixel(x, y, Color.FromArgb(_rand.Next(256), _rand.Next(256), _rand.Next(256)));
+                    }
+                }
+                _icons.Add(image);
+            }
+        }
 
         private string GetFirstName() => _fNameList[_rand.Next(_fNameList.Length)];
 
@@ -28,6 +46,7 @@ namespace DataAPI.Models.Database
 
         private int GetBalance() => _rand.Next(-10000, 10000);
 
+        private Bitmap GetIcon() => _icons[_rand.Next(_icons.Count)];
 
         public DataIntermed GetNextAccount()
         {
@@ -37,10 +56,10 @@ namespace DataAPI.Models.Database
             account.firstName = GetFirstName();
             account.lastName = GetLastName();
             account.balance = GetBalance();
+            account.icon = GetIcon();
             return account;
         }
 
-        // Generate to Create at least 100.000 records
         public int NumOAccts() => _rand.Next(100000, 999999);
     }
 }
