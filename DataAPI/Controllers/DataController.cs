@@ -1,4 +1,4 @@
-﻿using APIClasses;
+﻿using APIClass;
 using DataAPI.Models.Database;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -50,7 +50,7 @@ namespace DataAPI.Controllers
             //Console.WriteLine(total);
             return new ObjectResult(total) { StatusCode = 200 };
         }
-        
+
 
     }
 }

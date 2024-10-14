@@ -1,4 +1,4 @@
-﻿using APIClasses;
+﻿using APIClass;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestSharp;
@@ -33,7 +33,7 @@ namespace BusinessAPI.Controllers
                 if (response.IsSuccessful)
                 {
                     var formattedResponse = JsonConvert.DeserializeObject<DataIntermed>(response.Content);
-                    return Ok(formattedResponse); 
+                    return Ok(formattedResponse);
                 }
 
                 return NotFound($"No data found for index {index}");

@@ -6,7 +6,7 @@ using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using RestSharp;
-using APIClasses;
+using APIClass;
 using System.Windows.Markup;
 using System.IO;
 

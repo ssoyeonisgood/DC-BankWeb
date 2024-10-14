@@ -1,4 +1,4 @@
-﻿using APIClasses;
+﻿using APIClass;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,6 +21,7 @@ namespace DataAPI.Models.Database
             for (var i = 0; i < size; i++)
             {
                 DataIntermed temp = generator.GetNextAccount();
+                //Console.WriteLine(temp);
                 _database.Add(temp);
 
             }

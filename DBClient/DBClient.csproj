@@ -139,9 +139,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\APIClass\APIClasses.csproj">
-      <Project>{68bb9aeb-2e00-497e-a20e-6d3d860816cd}</Project>
-      <Name>APIClasses</Name>
+    <ProjectReference Include="..\APIClass\APIClass.csproj">
+      <Project>{8f7a1063-fea8-4319-a332-d875d3e64cc9}</Project>
+      <Name>APIClass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

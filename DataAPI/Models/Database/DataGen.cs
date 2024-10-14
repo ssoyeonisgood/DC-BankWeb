@@ -1,4 +1,4 @@
-﻿using APIClasses;
+﻿using APIClass;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -56,7 +56,7 @@ namespace DataAPI.Models.Database
             account.firstName = GetFirstName();
             account.lastName = GetLastName();
             account.balance = GetBalance();
-            account.icon = GetIcon();
+            //account.icon = GetIcon();
             return account;
         }
 

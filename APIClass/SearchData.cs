@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIClasses
+namespace APIClass
 {
     public class SearchData
     {
@@ -16,6 +16,4 @@ namespace APIClasses
             searchString = "";
         }
     }
-
-
 }

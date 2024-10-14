@@ -1,4 +1,4 @@
-﻿using APIClasses;
+﻿using APIClass;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestSharp;
